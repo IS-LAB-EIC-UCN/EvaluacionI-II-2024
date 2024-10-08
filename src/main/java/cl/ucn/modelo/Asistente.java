@@ -1,11 +1,13 @@
 package cl.ucn.modelo;
 
+import cl.ucn.observer.Observer;
+import cl.ucn.observer.Subject;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-public class Asistente {
+public class Asistente implements Observer {
 
     @Id
     @Column(name = "rut")
@@ -53,5 +55,14 @@ public class Asistente {
 
     public void setEventos(List<Evento> eventos) {
         this.eventos = eventos;
+    }
+
+    @Override
+    public void update(Subject s) {
+
+        Evento evento = ((Evento) s);
+        System.out.println("Notificación: El evento " + evento.getNombre() +
+                " ha sido actualizado. Nueva fecha: " + evento.getFecha() +
+                " Nuevo lugar: " + evento.getLugar() + " para el asistente " + this.nombre);
     }
 }

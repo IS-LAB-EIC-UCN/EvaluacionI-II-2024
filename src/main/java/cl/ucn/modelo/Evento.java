@@ -1,12 +1,14 @@
 package cl.ucn.modelo;
 
+import cl.ucn.observer.Observer;
+import cl.ucn.observer.Subject;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Evento {
+public class Evento extends Subject {
 
     @Id
     private Long id;
@@ -35,12 +37,7 @@ public class Evento {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
+        notifyObservers();
     }
 
     public String getFecha() {
@@ -49,12 +46,7 @@ public class Evento {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
+        notifyObservers();
     }
 
     public String getLugar() {
@@ -63,12 +55,7 @@ public class Evento {
 
     public void setLugar(String lugar) {
         this.lugar = lugar;
-
-        if (this.asistentes != null) {
-            for (Asistente asistente : asistentes) {
-                asistente.notificarCambio(this);
-            }
-        }
+        notifyObservers();
     }
 
     public List<Asistente> getAsistentes() {
@@ -82,5 +69,6 @@ public class Evento {
     public void agregarAsistente(Asistente asistente) {
         asistentes.add(asistente);
     }
+
 
 }

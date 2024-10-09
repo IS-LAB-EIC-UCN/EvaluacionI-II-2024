@@ -95,4 +95,39 @@ Buena suerte!
 
 ## Respuestas
 
-(comienze a escribir aquí sus respuestas, indicando sección y número de pregunta)
+### 1.1 
+
+Los patrones adecuados para dar solución a la problemática que presenta el sistema son: **Patrón Observador** y **Patrón Fachada (Facade)**.
+A continuación, el diagrama de clases que da solución a la problemática:
+<p align="center">
+<img src="imagenes/2.png" width="400">
+</p>
+
+El Patrón Observer desacopla las notificaciones de cambio que existen entre los Eventos y los Asistentes, mediante el uso de una interfaz.
+El Patrón Facade oculta los detalles internos del sistema, proporcionando una interfaz sencilla al programador.
+
+### 1.2
+
+Patrón Observer: Bajo acoplamiento (Propiedad de Diseño). Principio de inversión de dependencia (Dependencia de abstracciones), 
+Principio de Abierto/Cerrado , Principio de Responsabilidad Única.
+
+Patrón Facade: Principio de Responsabilidad Única (SRP): La fachada tiene una única responsabilidad: proporcionar una 
+interfaz simplificada para interactuar con un conjunto de clases complejas. Esto reduce la complejidad para los clientes y 
+mejora la mantenibilidad.
+
+### 2.1
+
+Respuesta: Es un patrón de diseño de comportamiento que define la estructura de un algoritmo en una clase base y permite
+que las subclases personalicen ciertos pasos sin cambiar la estructura general.
+
+Un sistema donde que paga los sueldos a sus funcionarios. El cálculo del sueldo puede basarse en características
+de los funcionarios como por ejemplo seguros de salud complementarios, seguros de vida, etc.  En este caso,
+la clase funcionario, sería una clase abstracta que proporciona métodos abstractos que calcularán los descuentos.
+Se tendría un método que calcula el sueldo con base en las implementaciones de los métodos abstractos. Este método es un
+_template method_.
+
+### 2.2
+
+Se presenta un **acoplamiento no aceptable** porque las clases A y B pueden acceder a recursos de la clase Database (tanto 
+para lecturas como para escrituras) sin una dependencia directa entre ellas. Esta situación puede dar lugar a 
+inconsistencias en los datos que ambas clases manipulan

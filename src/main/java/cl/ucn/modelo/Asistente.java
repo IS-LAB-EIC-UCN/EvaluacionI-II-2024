@@ -18,13 +18,6 @@ public class Asistente implements Observer {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "asistentes", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     List<Evento> eventos;
 
-
-    public void notificarCambio(Evento evento) {
-        System.out.println("Notificación: El evento " + evento.getNombre() +
-                " ha sido actualizado. Nueva fecha: " + evento.getFecha() +
-                " Nuevo lugar: " + evento.getLugar() + " para el asistente " + this.nombre);
-    }
-
     public void setRut(Long rut) {
         this.rut = rut;
     }
